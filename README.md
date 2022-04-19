@@ -9,7 +9,7 @@
 и не самым сложным) повторяющимся действиям, короче говоря - рутине.
 
 ## TODO
-- [ ] [Хранение всех данных на сервере для удалённого совместного доступа](https://github.com/avalanche-zz/perfomance-tracker/issues/1)
+- [x] [Хранение всех данных на сервере для удалённого совместного доступа](https://github.com/avalanche-zz/perfomance-tracker/issues/1)
 - [ ] [Возможность самостоятельно добавлять студентов, работы, достижения, новые группы](https://github.com/avalanche-zz/perfomance-tracker/issues/7)
 - [ ] [Выставление оценки в формате "дедлайн/защита" по 100-балльной шкале](https://github.com/avalanche-zz/perfomance-tracker/issues/12)
 - [ ] [Вычисление оценки за дедлайн](https://github.com/avalanche-zz/perfomance-tracker/issues/13)
