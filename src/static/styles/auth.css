@@ -1,5 +1,13 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
 .main {
-  height: 87%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

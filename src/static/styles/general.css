@@ -1,5 +1,14 @@
 body {
+  font-family: 'Roboto', sans-serif;
+}
+
+body .main {
+  padding-top: 80px;
   padding-left: 72px;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
 }
 
 .heading {
