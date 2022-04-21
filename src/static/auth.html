@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Авторизация</title>
+    <link rel='stylesheet' href='general.css'>
+    <link rel='stylesheet' href='header.css'>
+    <link rel='stylesheet' href='auth.css'>
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/icon?family=Material+Icons+Outlined' rel='stylesheet'>
+  </head>
+  <body>
+    <header class='header'>
+      <div class='sfu-logo-container'>
+        <img class='sfu-logo' src='sfu-logo.webp' alt='Логотип СФУ'>
+      </div>
+      <div class='title'>
+        Учёт успеваемости студентов
+      </div>
+    </header>
+    <main class='main'>
+      <div class='authorization'>
+        <div class='label'>
+          Авторизация
+        </div>
+        <form class='auth-form' method="post">
+            <div class='input'>
+              <span class="material-icons-outlined icon">
+                account_circle
+              </span>
+              <input id='login' name='login' class='field' type='text' placeholder='Логин'>
+            </div>
+            <div class='input'>
+              <span class="material-icons-outlined icon">
+                key
+              </span>
+              <input id='password' name='password' class='field' type='password' placeholder='Пароль'>
+            </div>
+            <button id='login-button' class='login-button' type='submit'>
+              Войти
+            </button>
+        </form>
+        <div class='help'>
+          Для получения логина и пароля обратитесь к администратору
+        </div>
+      </div>
+    </main>
+    <footer class='footer'>
+      КИ21-17/1б
+    </footer>
+  </body>
+</html>

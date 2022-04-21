@@ -1,0 +1,100 @@
+.main {
+  height: 87%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.authorization {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 450px;
+  height: 380px;
+  border: 2px solid #000000;
+  border-radius: 28px;
+  background-color: #dc6d50;
+  padding: 5px 0px;
+}
+
+.label,
+.help {
+  font-weight: 300;
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+  cursor: default;
+}
+
+.label {
+  font-size: 64px;
+}
+
+.help {
+  font-size: 14px;
+}
+
+.auth-form {
+  width: 300px;
+  height: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  position: absolute;
+  color: #808080;
+  top: 8px;
+  left: 8px;
+}
+
+.input {
+  position: relative;
+}
+
+.field {
+  box-sizing: border-box;
+  width: 300px;
+  height: 40px;
+  padding-left: 40px;
+  font-size: 24px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+}
+
+.field:focus,
+.field:active {
+  border-color: #2f8bc7;
+}
+
+.login-button {
+  width: 160px;
+  height: 50px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  font-size: 20px;
+  transition: background-color 150ms;
+}
+
+.login-button:hover {
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.login-button:focus {
+  border-color: #2f8bc7;
+}
+
+.login-button:active {
+  background-color: #bbb;
+  border-color: #000000;
+}
+
+.footer {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: 24px;
+  color: #808080;
+}
