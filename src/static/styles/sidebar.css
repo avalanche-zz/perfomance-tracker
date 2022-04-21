@@ -22,6 +22,9 @@
   width: 48px;
 }
 
+.sfu-logo:hover {
+  cursor: pointer;
+}
 
 .middle {
   flex: 1;
@@ -43,6 +46,11 @@
 .sidebar-item:hover {
   background-color: #d13c16;
   cursor: pointer;
+}
+
+.sidebar-item:active {
+  border: none;
+  background-color: #c22d07;
 }
 
 .sidebar-label {
