@@ -11,26 +11,8 @@
 }
 
 .top,
-.middle,
 .bottom {
-  text-align: center;
   padding: 24px 0;
-}
-
-.sfu-logo,
-.sidebar-avatar {
-  width: 48px;
-}
-
-.sfu-logo:hover {
-  cursor: pointer;
-}
-
-.middle {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .sidebar-item {
@@ -50,6 +32,18 @@
 
 .sidebar-item:active {
   background-color: #c22d07;
+}
+
+.sfu-logo,
+.sidebar-avatar {
+  width: 48px;
+}
+
+.middle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .sidebar-label {
