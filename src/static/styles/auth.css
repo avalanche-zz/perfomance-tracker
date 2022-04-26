@@ -2,10 +2,6 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.material-icons.md-36 {
-  font-size: 36px;
-}
-
 .main {
   height: 100%;
   display: flex;

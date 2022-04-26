@@ -1,10 +1,7 @@
 body {
   font-family: 'Roboto', sans-serif;
-}
-
-body .main {
-  padding-top: 80px;
-  padding-left: 72px;
+  padding-left: 144px;
+  padding-right: 72px;
 }
 
 .material-icons.md-36 {
