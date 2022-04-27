@@ -1,3 +1,7 @@
+from operator import mod
+from pyexpat import model
+from statistics import mode
+from tkinter import CASCADE
 from django.db import models
 
 # Create your models here.
@@ -13,5 +17,5 @@ class Student(models.Model):
     )
     vk_link = models.CharField(max_length=250, blank=True)
     git_link = models.CharField(max_length=250, blank=True)
-    promised_achievements = models.CharField(max_length=500, blank=True)
-    acquired_achievements = models.CharField(max_length=500, blank=True)
+    promised_achievements = models.ManyToManyField('achievements.Achievement')
+    acquired_achievements = models.ManyToManyField('achievements.Achievement')
