@@ -15,8 +15,8 @@ class Student(models.Model):
         'groups.Group',
         on_delete=models.CASCADE,
     )
-    vk_link = models.CharField(max_length=250, blank=True)
-    git_link = models.CharField(max_length=250, blank=True)
+    vk_link = models.URLField(unique=True, blank=True, null=True)
+    git_link = models.URLField(unique=True, blank=True, null=True)
     promised_achievements = models.ManyToManyField(
         'achievements.Achievement',
         related_name='promised_to_students'
