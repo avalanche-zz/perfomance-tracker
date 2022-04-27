@@ -17,5 +17,11 @@ class Student(models.Model):
     )
     vk_link = models.CharField(max_length=250, blank=True)
     git_link = models.CharField(max_length=250, blank=True)
-    promised_achievements = models.ManyToManyField('achievements.Achievement')
-    acquired_achievements = models.ManyToManyField('achievements.Achievement')
+    promised_achievements = models.ManyToManyField(
+        'achievements.Achievement',
+        related_name='promised_to_students'
+    )
+    acquired_achievements = models.ManyToManyField(
+        'achievements.Achievement',
+        related_name='acquired_by_students'
+    )
