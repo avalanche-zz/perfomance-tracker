@@ -19,9 +19,11 @@ class Student(models.Model):
     git_link = models.URLField(unique=True, blank=True, null=True)
     promised_achievements = models.ManyToManyField(
         'achievements.Achievement',
-        related_name='promised_to_students'
+        related_name='promised_to_students',
+        blank=True
     )
     acquired_achievements = models.ManyToManyField(
         'achievements.Achievement',
-        related_name='acquired_by_students'
+        related_name='acquired_by_students',
+        blank=True
     )
