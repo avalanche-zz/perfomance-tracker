@@ -1,6 +1,7 @@
 from datetime import date
 from django.db import models
 from django.db.models import Q
+from django.core.validators import MaxValueValidator
 
 # Create your models here.
 
@@ -14,8 +15,16 @@ class Score(models.Model):
         'assignments.Assignment',
         on_delete=models.CASCADE,
     )
-    general_score = models.PositiveSmallIntegerField()
-    deadline_score = models.PositiveSmallIntegerField()
+    general_score = models.PositiveSmallIntegerField(
+        validators=[
+            MaxValueValidator(100)
+        ]
+    )
+    deadline_score = models.PositiveSmallIntegerField(
+        validators=[
+            MaxValueValidator(100)
+        ]
+    )
     handing_in_date = models.DateField(default=date.today)
 
     class Meta:
@@ -26,9 +35,5 @@ class Score(models.Model):
                     'deadline_score', 'handing_in_date'
                 ],
                 name='unique_score'
-            ),
-            models.CheckConstraint(
-                check=Q(general_score__lte=100), name='general_score_lte_100'),
-            models.CheckConstraint(
-                check=Q(deadline_score__lte=100), name='deadline_score_lte_100')
+            )
         ]
