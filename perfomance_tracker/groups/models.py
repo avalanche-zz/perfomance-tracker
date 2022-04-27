@@ -12,7 +12,7 @@ class Group(models.Model):
         'years.Year',
         on_delete=models.CASCADE,
     )
-    group = models.IntegerField()
+    group = models.PositiveSmallIntegerField()
     subgroup = models.CharField(max_length=5)
     education_type = models.IntegerField(choices=EDUCATION_TYPE_CHOICES)
 
