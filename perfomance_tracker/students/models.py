@@ -4,6 +4,14 @@ from django.db import models
 
 
 class Student(models.Model):
+
+    class Meta:
+        verbose_name = 'Студент'
+        verbose_name_plural = 'Студенты'
+
+    def __str__(self):
+        return f'{self.last_name} {self.first_name} {self.patronymic}'.strip()
+
     last_name = models.CharField(
         max_length=100,
         verbose_name='Фамилия'
@@ -46,7 +54,3 @@ class Student(models.Model):
         related_name='acquired_by_students',
         verbose_name='Полученные достижения'
     )
-
-    class Meta:
-        verbose_name = 'Студент'
-        verbose_name_plural = 'Студенты'

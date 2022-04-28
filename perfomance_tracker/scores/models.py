@@ -45,3 +45,6 @@ class Score(models.Model):
         ]
         verbose_name = 'Оценка'
         verbose_name_plural = 'Оценки'
+
+    def __str__(self):
+        return f'Оценка студента {str(self.student).split()[0]} {str(self.student).split()[1][0]}. за работу "{str(self.assignment)}"'

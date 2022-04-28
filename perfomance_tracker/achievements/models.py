@@ -26,3 +26,6 @@ class Achievement(models.Model):
         ]
         verbose_name = 'Достижение'
         verbose_name_plural = 'Достижения'
+
+    def __str__(self):
+        return self.name

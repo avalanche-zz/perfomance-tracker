@@ -4,8 +4,8 @@ from django.db import models
 
 
 class Setting(models.Model):
-    year = models.ForeignKey(
-        'years.Year',
+    stream = models.ForeignKey(
+        'streams.Stream',
         on_delete=models.CASCADE,
         verbose_name='Поток'
     )
@@ -21,3 +21,6 @@ class Setting(models.Model):
     class Meta:
         verbose_name = 'Настройка'
         verbose_name_plural = 'Настройки'
+
+    def __str__(self):
+        return f'Настройки потока {str(self.stream)}'
