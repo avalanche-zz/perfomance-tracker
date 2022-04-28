@@ -4,6 +4,14 @@ from django.db import models
 
 
 class Setting(models.Model):
+
+    class Meta:
+        verbose_name = 'Настройка'
+        verbose_name_plural = 'Настройки'
+
+    def __str__(self):
+        return f'Настройки потока {str(self.stream)}'
+
     stream = models.ForeignKey(
         'streams.Stream',
         on_delete=models.CASCADE,
@@ -17,10 +25,3 @@ class Setting(models.Model):
         default=1000,
         verbose_name='Кол-во баллов для экзамена/зачёта автоматом'
     )
-
-    class Meta:
-        verbose_name = 'Настройка'
-        verbose_name_plural = 'Настройки'
-
-    def __str__(self):
-        return f'Настройки потока {str(self.stream)}'
