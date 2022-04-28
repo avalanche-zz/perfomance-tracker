@@ -4,9 +4,18 @@ from django.db import models
 
 
 class Achievement(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField(blank=True)
-    image = models.ImageField(blank=True)
+    name = models.CharField(
+        max_length=100,
+        verbose_name='Название'
+    )
+    description = models.TextField(
+        blank=True,
+        verbose_name='Описание'
+    )
+    image = models.ImageField(
+        blank=True,
+        verbose_name='Изображение'
+    )
 
     class Meta:
         constraints = [
@@ -15,3 +24,5 @@ class Achievement(models.Model):
                 name='unique_achievement'
             )
         ]
+        verbose_name = 'Достижение'
+        verbose_name_plural = 'Достижения'

@@ -4,12 +4,21 @@ from django.db import models
 
 
 class Assignment(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField(blank=True)
-    deadline = models.DateField()
+    name = models.CharField(
+        max_length=100,
+        verbose_name='Название'
+    )
+    description = models.TextField(
+        blank=True,
+        verbose_name='Описание'
+    )
+    deadline = models.DateField(
+        verbose_name='Дедлайн'
+    )
     assigned_to_year = models.ForeignKey(
         'years.Year',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        verbose_name='Поток'
     )
 
     class Meta:
@@ -19,3 +28,5 @@ class Assignment(models.Model):
                 name='unique_assignment'
             )
         ]
+        verbose_name = 'Задание'
+        verbose_name_plural = 'Задания'
