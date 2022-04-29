@@ -36,7 +36,7 @@ class Group(models.Model):
         max_length=5,
         verbose_name='Подгруппа'
     )
-    education_type = models.IntegerField(
+    education_type = models.PositiveSmallIntegerField(
         choices=EDUCATION_TYPE_CHOICES,
         verbose_name='Тип обучения'
     )

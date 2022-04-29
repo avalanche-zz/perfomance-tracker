@@ -42,15 +42,9 @@ class Student(models.Model):
         null=True,
         verbose_name='Ссылка на GitHub/GitLab'
     )
-    promised_achievements = models.ManyToManyField(
-        'achievements.Achievement',
-        blank=True,
-        related_name='promised_to_students',
-        verbose_name='Обещанные достижения'
-    )
     acquired_achievements = models.ManyToManyField(
         'achievements.Achievement',
         blank=True,
-        related_name='acquired_by_students',
+        related_name='acquired_achievements',
         verbose_name='Полученные достижения'
     )
