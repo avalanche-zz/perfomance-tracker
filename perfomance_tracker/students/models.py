@@ -44,10 +44,10 @@ class Student(models.Model):
     )
     achievements = models.ManyToManyField(
         'achievements.Achievement',
-        through='Relation'
+        through='StudentAchievements'
     )
 
-class Relation(models.Model):
+class StudentAchievements(models.Model):
 
     class Meta:
         constraints = [

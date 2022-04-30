@@ -22,11 +22,10 @@ class Stream(models.Model):
         verbose_name = 'Поток'
         verbose_name_plural = 'Потоки'
 
-    # Automatically create the setting upon stream creation
-
     def __str__(self):
         return str(self.stream.year)
 
+    # Automatically create the setting upon stream creation
     def save(self, *args, **kwargs):
         created = not self.pk
         super().save(*args, **kwargs)

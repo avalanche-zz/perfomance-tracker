@@ -1,5 +1,5 @@
 from django.db import models
-from students.models import Student, Relation
+from students.models import Student, StudentAchievements
 
 # Create your models here.
 
@@ -19,15 +19,18 @@ class Achievement(models.Model):
     def __str__(self):
         return self.name
 
+    # Automatically attach the just-created achievement
+    # to every existing student with "doesn't" relation
     def save(self, *args, **kwargs):
         created = not self.pk
         super().save(*args, **kwargs)
         if created:
-            Relation.objects.create(
-                student=Student,
-                achievement=self,
-                relation=0
-            )
+            for student_to_be_attached_to in Student.objects.all():
+                StudentAchievements.objects.create(
+                    student=student_to_be_attached_to,
+                    achievement=self,
+                    relation=0
+                )
 
     name = models.CharField(
         max_length=100,
