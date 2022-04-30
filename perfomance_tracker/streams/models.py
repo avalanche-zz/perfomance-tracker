@@ -23,14 +23,17 @@ class Stream(models.Model):
         verbose_name_plural = 'Потоки'
 
     # Automatically create the setting upon stream creation
+
+    def __str__(self):
+        return str(self.stream.year)
+
     def save(self, *args, **kwargs):
         created = not self.pk
         super().save(*args, **kwargs)
         if created:
-            Setting.objects.create(stream=self)
-
-    def __str__(self):
-        return str(self.stream.year)
+            Setting.objects.create(
+                stream=self
+            )
 
     stream = models.DateField(
         unique=True,

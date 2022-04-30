@@ -1,4 +1,5 @@
 from django.db import models
+from students.models import Student, Relation
 
 # Create your models here.
 
@@ -17,6 +18,16 @@ class Achievement(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        created = not self.pk
+        super().save(*args, **kwargs)
+        if created:
+            Relation.objects.create(
+                student=Student,
+                achievement=self,
+                relation=0
+            )
 
     name = models.CharField(
         max_length=100,
