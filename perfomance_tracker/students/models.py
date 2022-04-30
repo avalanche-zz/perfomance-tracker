@@ -42,9 +42,26 @@ class Student(models.Model):
         null=True,
         verbose_name='Ссылка на GitHub/GitLab'
     )
-    acquired_achievements = models.ManyToManyField(
+    achievements = models.ManyToManyField(
         'achievements.Achievement',
-        blank=True,
-        related_name='acquired_achievements',
-        verbose_name='Полученные достижения'
+        through='Relation'
+    )
+
+class Relation(models.Model):
+    RELATION_CHOICES=(
+        (0, 'Не обещано/выдано'),
+        (1, 'Обещано'),
+        (2, 'Выдано')
+    )
+    student=models.ForeignKey(
+        Student,
+        on_delete=models.CASCADE
+    )
+    achievement=models.ForeignKey(
+        'achievements.Achievement',
+        on_delete=models.CASCADE
+    )
+    relation=models.PositiveSmallIntegerField(
+        choices=RELATION_CHOICES,
+        verbose_name='Отношение'
     )
