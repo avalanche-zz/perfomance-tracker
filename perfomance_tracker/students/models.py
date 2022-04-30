@@ -48,6 +48,15 @@ class Student(models.Model):
     )
 
 class Relation(models.Model):
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['student', 'achievement'],
+                name='unique_student-achievement_relation'
+            )
+        ]
+
     RELATION_CHOICES=(
         (0, 'Не обещано/выдано'),
         (1, 'Обещано'),
