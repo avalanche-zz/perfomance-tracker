@@ -37,16 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'teachers',
-    'streams',
-    'groups',
-    'students',
-    'assignments',
-    'scores',
-    'achievements',
-    'stats',
-    'settings',
-    'help'
+    'teachers.apps.TeachersConfig',
+    'streams.apps.StreamsConfig',
+    'groups.apps.GroupsConfig',
+    'students.apps.StudentsConfig',
+    'assignments.apps.AssignmentsConfig',
+    'scores.apps.ScoresConfig',
+    'achievements.apps.AchievementsConfig',
+    'stats.apps.StatsConfig',
+    'settings.apps.SettingsConfig',
+    'help.apps.HelpConfig'
 ]
 
 MIDDLEWARE = [
@@ -115,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC+7'
 
 USE_I18N = True
 

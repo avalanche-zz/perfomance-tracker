@@ -1,5 +1,5 @@
 from django.contrib import admin
-from assignments.models import Assignment
+from .models import Assignment
 
 # Register your models here.
 

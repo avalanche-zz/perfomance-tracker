@@ -1,5 +1,5 @@
 from django.contrib import admin
-from scores.models import Score
+from .models import Score
 
 # Register your models here.
 

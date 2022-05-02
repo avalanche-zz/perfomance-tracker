@@ -1,5 +1,5 @@
 from django.contrib import admin
-from streams.models import Stream
+from .models import Stream
 
 # Register your models here.
 
