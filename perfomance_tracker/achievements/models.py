@@ -20,7 +20,7 @@ class Achievement(models.Model):
         return self.name
 
     # Automatically attach the just-created achievement
-    # to every existing student with "doesn't" relation
+    # to every existing student with "doesn't have" relation
     def save(self, *args, **kwargs):
         created = not self.pk
         super().save(*args, **kwargs)
