@@ -5,7 +5,18 @@ from .models import Teacher
 
 
 class TeacherAdmin(admin.ModelAdmin):
-    pass
+    fieldsets = [
+        (
+            'Имя',
+            {
+                'fields': [
+                    'last_name',
+                    'first_name',
+                    'patronymic'
+                ]
+            }
+        )
+    ]
 
 
 admin.site.register(Teacher, TeacherAdmin)

@@ -8,7 +8,12 @@ class Group(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=['stream', 'group', 'subgroup', 'education_type'],
+                fields=[
+                    'stream',
+                    'group',
+                    'subgroup',
+                    'education_type'
+                ],
                 name='unique_group'
             )
         ]

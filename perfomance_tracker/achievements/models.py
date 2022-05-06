@@ -1,5 +1,5 @@
 from django.db import models
-from students.models import Student, StudentAchievements
+from students.models import Student, StudentAchievement
 
 # Create your models here.
 
@@ -26,7 +26,7 @@ class Achievement(models.Model):
         super().save(*args, **kwargs)
         if created:
             for student_to_be_attached_to in Student.objects.all():
-                StudentAchievements.objects.create(
+                StudentAchievement.objects.create(
                     student=student_to_be_attached_to,
                     achievement=self,
                     relation=0

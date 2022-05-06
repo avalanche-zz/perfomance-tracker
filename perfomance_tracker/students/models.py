@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.db import models
 
 # Create your models here.
@@ -44,33 +45,44 @@ class Student(models.Model):
     )
     achievements = models.ManyToManyField(
         'achievements.Achievement',
-        through='StudentAchievements'
+        through='StudentAchievement'
     )
 
-class StudentAchievements(models.Model):
+
+class StudentAchievement(models.Model):
 
     class Meta:
+        verbose_name = 'Достижение студента'
+        verbose_name_plural = 'Достижения студента'
         constraints = [
             models.UniqueConstraint(
-                fields=['student', 'achievement'],
+                fields=[
+                    'student',
+                    'achievement'
+                ],
                 name='unique_student-achievement_relation'
             )
         ]
 
-    RELATION_CHOICES=(
+    def __str__(self):
+        return f'{self.student}~{self.achievement}'
+
+    RELATION_CHOICES = (
         (0, 'Не обещано/выдано'),
         (1, 'Обещано'),
         (2, 'Выдано')
     )
-    student=models.ForeignKey(
+    student = models.ForeignKey(
         Student,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        verbose_name='Студент'
     )
-    achievement=models.ForeignKey(
+    achievement = models.ForeignKey(
         'achievements.Achievement',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        verbose_name='Достижение'
     )
-    relation=models.PositiveSmallIntegerField(
+    relation = models.PositiveSmallIntegerField(
         choices=RELATION_CHOICES,
         verbose_name='Отношение'
     )

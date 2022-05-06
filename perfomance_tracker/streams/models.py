@@ -3,7 +3,6 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.translation import gettext_lazy as _
 from django.db import models
-from settings.models import Setting
 
 # Create your models here.
 
@@ -25,15 +24,6 @@ class Stream(models.Model):
     def __str__(self):
         return str(self.stream.year)
 
-    # Automatically create the setting upon stream creation
-    def save(self, *args, **kwargs):
-        created = not self.pk
-        super().save(*args, **kwargs)
-        if created:
-            Setting.objects.create(
-                stream=self
-            )
-
     stream = models.DateField(
         unique=True,
         validators=[
@@ -43,4 +33,12 @@ class Stream(models.Model):
         ],
         verbose_name='Год зачисления',
         help_text='Формат: 20yy-01-01, где 20yy (например, 2021) – год зачисления'
+    )
+    required = models.PositiveSmallIntegerField(
+        default=600,
+        verbose_name='Кол-во баллов для допуска к зачёту/экзамену'
+    )
+    autopass = models.PositiveSmallIntegerField(
+        default=1000,
+        verbose_name='Кол-во баллов для экзамена/зачёта автоматом'
     )

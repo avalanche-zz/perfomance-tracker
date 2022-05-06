@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'scores.apps.ScoresConfig',
     'achievements.apps.AchievementsConfig',
     'stats.apps.StatsConfig',
-    'settings.apps.SettingsConfig',
     'help.apps.HelpConfig'
 ]
 

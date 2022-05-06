@@ -5,7 +5,34 @@ from .models import Score
 
 
 class ScoreAdmin(admin.ModelAdmin):
-    pass
+    fieldsets = [
+        (
+            None,
+            {
+                'fields': [
+                    'student',
+                    'assignment'
+                ]
+            }
+        ),
+        (
+            'Оценка',
+            {
+                'fields': [
+                    'general_score',
+                    'deadline_score'
+                ]
+            }
+        ),
+        (
+            None,
+            {
+                'fields': [
+                    'handing_in_date'
+                ]
+            }
+        )
+    ]
 
 
 admin.site.register(Score, ScoreAdmin)
