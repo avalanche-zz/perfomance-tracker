@@ -14,6 +14,7 @@ class GroupInline(admin.TabularInline):
 
 
 class StreamAdmin(admin.ModelAdmin):
+
     fieldsets = [
         (
             'Поток',
@@ -38,6 +39,9 @@ class StreamAdmin(admin.ModelAdmin):
     ]
     inlines = [
         GroupInline
+    ]
+    search_fields = [
+        'stream'
     ]
 
 
