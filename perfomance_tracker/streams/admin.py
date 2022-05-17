@@ -40,9 +40,6 @@ class StreamAdmin(admin.ModelAdmin):
     inlines = [
         GroupInline
     ]
-    search_fields = [
-        'stream'
-    ]
 
 
 admin.site.register(Stream, StreamAdmin)

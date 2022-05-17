@@ -17,11 +17,6 @@ class TeacherAdmin(admin.ModelAdmin):
             }
         )
     ]
-    search_fields = [
-        'last_name',
-        'first_name',
-        'patronymic'
-    ]
 
 
 admin.site.register(Teacher, TeacherAdmin)

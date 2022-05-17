@@ -35,9 +35,6 @@ class GroupAdmin(admin.ModelAdmin):
     inlines = [
         StudentInline
     ]
-    list_filter = [
-        'stream',
-        'education_type'
-    ]
+
 
 admin.site.register(Group, GroupAdmin)
