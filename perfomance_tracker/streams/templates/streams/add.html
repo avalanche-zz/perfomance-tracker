@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-  <head>
-    <title>Добавление потока</title>
-  </head>
+{% load static %}
 
-  <body>
+{% block styles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'streams/styles/style.css' %}">
+{% endblock %}
+
+{% block title %}
+Добавление потока
+{% endblock %}
+
+{% block content %}
+  <main>
     <form method="post">
       {% csrf_token %}
       {{ form }}
       <input type="submit" value="Добавить">
     </form>
-  </body>
-
-</html>
+  </main>
+{% endblock %}
