@@ -2,10 +2,18 @@
 <html lang="en">
 
   <head>
-    {% load static %}
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="shortcut icon" type="image/x-icon" href="{% static images/favicon.ico %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/general.css' %}">
+    
+    {% block styles %}
+    <!-- Styles go here -->
+    {% endblock %}
+    {% block scripts %}
+    <!-- Scripts go here -->
+    {% endblock $}
     <title>
       {% block title %}
       <!-- Title goes here  -->
@@ -14,7 +22,8 @@
   </head>
 
   <body>
-    {% include sidebar.html %} <!-- Sidebar goes here -->
+
+    {% include 'sidebar.html' %} <!-- Sidebar goes here -->
     {% block content %}
     <!-- Main content goes here -->
     {% endblock %}

@@ -1,25 +1,28 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-  <head>
-    {% load static %}
+{% load static %}
+
+{% block styles %}
     <link rel="stylesheet" type="text/css" href="{% static 'streams/style.css' %}">
-    <title>Потоки</title>
-  </head>
+{% endblock %}
 
-  <body>
+{% block title %}
+Потоки
+{% endblock %}
+
+{% block content %}
+    <main>
     {% if streams %}
-    {% for stream in streams %}
-    <div>
-      <a href="{% url 'streams:detail' stream.id %}">{{ stream }}</a>
-      <a href="{% url 'streams:edit' stream.id %}"><button>Редактировать</button></a>
-      <a href="{% url 'streams:delete' stream.id %}"><button>Удалить</button></a>
-    </div>
-    {% endfor %}
-    {% else %}
-    <p>Нет потоков для показа.</p>
-    {% endif %}
-    <a href="{% url 'streams:add' %}"><button>Добавить поток</button></a>
-  </body>
-
-</html>
+      {% for stream in streams %}
+      <div>
+        <a href="{% url 'streams:detail' stream.id %}">{{ stream }}</a>
+        <a href="{% url 'streams:edit' stream.id %}"><button>Редактировать</button></a>
+        <a href="{% url 'streams:delete' stream.id %}"><button>Удалить</button></a>
+      </div>
+      {% endfor %}
+      {% else %}
+      <p>Нет потоков для показа.</p>
+      {% endif %}
+      <a href="{% url 'streams:add' %}"><button>Добавить поток</button></a>
+    </main>
+{% endblock %}
