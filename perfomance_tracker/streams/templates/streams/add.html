@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Добавление потока</title>
+  </head>
+
+  <body>
+    <form method="post">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="Добавить">
+    </form>
+  </body>
+
+</html>
