@@ -6,6 +6,12 @@ from django.db import models
 class Group(models.Model):
 
     class Meta:
+        ordering = [
+            'education_type',
+            'stream',
+            'group_number',
+            'subgroup'
+        ]
         constraints = [
             models.UniqueConstraint(
                 fields=[

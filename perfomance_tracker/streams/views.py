@@ -2,7 +2,9 @@ from django.db.models import Count
 from django.urls import reverse_lazy
 from django.views import generic
 
+from .forms import AddGroupForm
 from .models import Stream
+from groups.models import Group
 
 # Create your views here.
 
@@ -31,6 +33,13 @@ class StreamDetail(generic.DetailView):
     model = Stream
     context_object_name = 'stream'
     template_name = 'streams/stream.html'
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        context_data['groups'] = Group.objects.filter(
+            stream_id=context_data['stream']
+        )
+        return context_data
 
 
 class AddStream(generic.CreateView):

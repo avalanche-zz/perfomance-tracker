@@ -7,6 +7,9 @@ from students.models import Student, StudentAchievement
 class Achievement(models.Model):
 
     class Meta:
+        ordering = [
+            'name'
+        ]
         constraints = [
             models.UniqueConstraint(
                 fields=['name', 'description', 'image'],

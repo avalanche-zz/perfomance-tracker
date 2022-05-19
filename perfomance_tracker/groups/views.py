@@ -35,27 +35,26 @@ class GroupsList(generic.ListView):
             )
         context_data['stream_selected'] = stream
 
-        sort = self.request.GET.get('sort')
-        order = self.request.GET.get('order')
-        match sort:
-            case 'group':
-                if order == 'up':
-                    context_data['groups'] = context_data['groups'].order_by(
-                        'education_type', 'stream', 'group_number', 'subgroup'
-                    )
-                else:
-                    context_data['groups'] = context_data['groups'].order_by(
-                        '-education_type', '-stream', '-group_number', '-subgroup'
-                    )
-            case 'students_number':
-                if order == 'up':
-                    context_data['groups'] = context_data['groups'].order_by(
-                        'students_number'
-                    )
-                else:
-                    context_data['groups'] = context_data['groups'].order_by(
-                        '-students_number'
-                    )
+        sort = self.request.GET.get('sort') or ''
+        order = self.request.GET.get('order') or ''
+        if not sort or sort == 'group':
+            if not order or order == 'up':
+                context_data['groups'] = context_data['groups'].order_by(
+                    'education_type', 'stream', 'group_number', 'subgroup'
+                )
+            else:
+                context_data['groups'] = context_data['groups'].order_by(
+                    '-education_type', '-stream', '-group_number', '-subgroup'
+                )
+        elif sort == 'students_number':
+            if not order or order == 'up':
+                context_data['groups'] = context_data['groups'].order_by(
+                    'students_number'
+                )
+            else:
+                context_data['groups'] = context_data['groups'].order_by(
+                    '-students_number'
+                )
         context_data['sort'] = sort
         context_data['order'] = order
         return context_data

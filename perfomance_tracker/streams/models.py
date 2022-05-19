@@ -7,6 +7,9 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 class Stream(models.Model):
 
     class Meta:
+        ordering = [
+            'stream'
+        ]
         verbose_name = 'Поток'
         verbose_name_plural = 'Потоки'
 

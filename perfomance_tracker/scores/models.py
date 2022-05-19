@@ -8,6 +8,10 @@ from django.core.validators import MaxValueValidator
 class Score(models.Model):
 
     class Meta:
+        ordering = [
+            'assignment',
+            'student'
+        ]
         constraints = [
             models.UniqueConstraint(
                 fields=[

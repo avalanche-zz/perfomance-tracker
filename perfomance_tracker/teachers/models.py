@@ -6,6 +6,11 @@ from django.db import models
 class Teacher(models.Model):
 
     class Meta:
+        ordering = [
+            'last_name',
+            'first_name',
+            'patronymic'
+        ]
         verbose_name = 'Учитель'
         verbose_name_plural = 'Учителя'
 

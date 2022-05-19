@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block styles %}
-  <link rel="stylesheet" type="text/css" href="{% static 'streams/styles/style.css' %}">
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'streams/styles/style.css' %}"> -->
 {% endblock %}
 
 {% block title %}
@@ -11,13 +11,23 @@
 {% endblock %}
 
 {% block main %}
-  <main>
-    <a href="{% url 'streams:streams' %}">Назад</a>
-    <h1>{{ stream }}</h1>
-    <span>Настройки:</span>
-    <ul>
-      <li>Количество баллов для допуска к аттестации: {{ stream.required }}</li>
-      <li>Количество баллов для оценки автоматом: {{ stream.autopass }}</li>
-    </ul>
-  </main>
+<main>
+  <a href="{% url 'streams:streams' %}">Назад</a>
+  <h1>{{ stream }}</h1>
+  <span>Настройки:</span>
+  <ul>
+    <li>Количество баллов для допуска к аттестации: {{ stream.required }}</li>
+    <li>Количество баллов для оценки автоматом: {{ stream.autopass }}</li>
+  </ul>
+  {% if not groups %}
+    <span>Нет групп</span>
+  {% else %}
+    <p>Группы:</p>
+    {% for group in groups %}
+      <div>
+        <a href="{% url 'groups:group' group.pk %}">{{ group }}</a>
+      </div>
+      {% endfor %}
+  {% endif %}
+</main>
 {% endblock %}

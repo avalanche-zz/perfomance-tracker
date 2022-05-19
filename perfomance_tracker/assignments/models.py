@@ -11,6 +11,10 @@ def default_deadline():
 class Assignment(models.Model):
 
     class Meta:
+        ordering = [
+            'stream',
+            'name'
+        ]
         constraints = [
             models.UniqueConstraint(
                 fields=['name', 'description', 'deadline', 'stream'],

@@ -11,32 +11,29 @@
 {% endblock %}
 
 {% block main %}
-  <main>
-    {% if streams %}
-    <form method="GET">
-      <input type="text" name="search" placeholder="Поиск" value="{{ search }}">
-      <input type="submit" value="Найти">
-    </form>
-      {% for stream in streams %}
-        <div>
-          <a href="{% url 'streams:stream' stream.pk %}">{{ stream }}</a>
-          {% if stream.groups_num %}
-          <span>Количество групп: {{ stream.groups_num }}</span>
-          {% else %}
-          <span>Нет групп</span>
-          {% endif %}
-          <a href="{% url 'streams:edit' stream.pk %}">
-            Редактировать
-          </a>
-
-          <a href="{% url 'streams:delete' stream.pk %}">
-            Удалить
-          </a>
-        </div>
-      {% endfor %}
-      {% else %}
-        <span>Нет потоков для показа.</span>
-      {% endif %}
-      <a href="{% url 'streams:add' %}">Добавить поток</a>
-  </main>
+<main>
+  <form method="GET">
+    <input type="text" name="search" placeholder="Поиск" value="{{ search }}">
+    <input type="submit" value="Найти">
+  </form>
+    {% for stream in streams %}
+      <div>
+        <a href="{% url 'streams:stream' stream.pk %}">{{ stream }}</a>
+        {% if stream.groups_num %}
+        <span>Количество групп: {{ stream.groups_num }}</span>
+        {% else %}
+        <span>Нет групп</span>
+        {% endif %}
+        <a href="{% url 'streams:edit' stream.pk %}">
+          Редактировать
+        </a>
+        <a href="{% url 'streams:delete' stream.pk %}">
+          Удалить
+        </a>
+      </div>
+    {% empty %}
+      <span>Нет потоков для показа.</span>
+    {% endfor %}
+    <a href="{% url 'streams:add' %}">Добавить поток</a>
+</main>
 {% endblock %}

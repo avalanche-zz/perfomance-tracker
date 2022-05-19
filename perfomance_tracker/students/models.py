@@ -9,6 +9,12 @@ class Student(models.Model):
     class Meta:
         verbose_name = 'Студент'
         verbose_name_plural = 'Студенты'
+        ordering = [
+            'last_name',
+            'first_name',
+            'patronymic',
+            'group'            
+        ]
 
     def __str__(self):
         return f'{self.last_name} {self.first_name} {self.patronymic}'.strip()
@@ -52,6 +58,10 @@ class Student(models.Model):
 class StudentAchievement(models.Model):
 
     class Meta:
+        ordering = [
+            'student',
+            'relation'
+        ]
         verbose_name = 'Достижение студента'
         verbose_name_plural = 'Достижения студента'
         constraints = [
