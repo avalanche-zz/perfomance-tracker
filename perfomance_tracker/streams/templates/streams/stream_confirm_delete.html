@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'streams/styles/style.css' %}"> -->
+{% endblock %}
+
+{% block title %}
+  Поток {{ stream }}
+{% endblock %}
+
+{% block main %}
+  <main>
+    <a href="{% url 'streams:streams' %}">Назад</a>
+    <form method="POST">
+      {% csrf_token %}
+      <span>
+        Вы действительно хотите удалить поток {{ stream }}?
+      </span>
+      <input type="submit" value="Да">
+    </form>
+  </main>
+{% endblock %}

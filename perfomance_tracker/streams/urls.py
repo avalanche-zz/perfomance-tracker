@@ -1,11 +1,11 @@
 from django.urls import path
-from . import views
+from .views import StreamsList, StreamDetail, AddStream, EditStream, DeleteStream
 
 app_name = 'streams'
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
-    path('<int:pk>/', views.DetailView.as_view(), name='detail'),
-    path('add/', views.add, name='add'),
-    path('<int:stream_id>/edit/', views.edit, name='edit'),
-    path('<int:stream_id>/delete/', views.delete, name='delete')
+    path('', StreamsList.as_view(), name='streams'),
+    path('<int:pk>/', StreamDetail.as_view(), name='stream'),
+    path('add/', AddStream.as_view(), name='add'),
+    path('<int:pk>/edit/', EditStream.as_view(), name='edit'),
+    path('<int:pk>/delete/', DeleteStream.as_view(), name='delete')
 ]

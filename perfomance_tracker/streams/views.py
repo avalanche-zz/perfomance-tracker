@@ -1,56 +1,51 @@
-from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.db.models import Count
+from django.urls import reverse_lazy
 from django.views import generic
-from django.shortcuts import get_object_or_404, render
 
 from .models import Stream
-from .forms import AddStreamForm
 
 # Create your views here.
 
 
-class IndexView(generic.ListView):
-    template_name = 'streams/index.html'
-    context_object_name = 'streams'
-    
-    def get_queryset(self):
-        return Stream.objects.order_by('-stream')
-
-
-class DetailView(generic.DetailView):
+class StreamsList(generic.ListView):
     model = Stream
-    template_name = 'streams/detail.html'
+    queryset = Stream.objects.annotate(groups_num=Count('group'))
+    context_object_name = 'streams'
+    ordering = [
+        '-stream'
+    ]
+    template_name = 'streams/streams.html'
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        search = self.request.GET.get('search') or ''
+        if search:
+            context_data['streams'] = context_data['streams'].filter(
+                stream__icontains=search
+            )
+        context_data['search'] = search
+        return context_data
 
 
-def add(request):
-    if request.method == 'POST':
-        form = AddStreamForm(request.POST)
-        if form.is_valid():
-            Stream.objects.create(**form.cleaned_data)
-            return HttpResponseRedirect(reverse('streams:index'))
-    else:
-        form = AddStreamForm()
-    context = {
-        'form': form
-    }
-    return render(request, 'streams/add.html', context)
+class StreamDetail(generic.DetailView):
+    model = Stream
+    context_object_name = 'stream'
+    template_name = 'streams/stream.html'
 
 
-def edit(request, stream_id):
-    stream = get_object_or_404(Stream, id=stream_id)
-    context = {
-        'stream': stream.id,
-        'year': stream,
-        'required': stream.required,
-        'autopass': stream.autopass
-    }
-    return render(request, 'streams/edit.html', context)
+class AddStream(generic.CreateView):
+    model = Stream
+    fields = '__all__'
+    success_url = reverse_lazy('streams:streams')
 
 
-def delete(request, stream_id):
-    stream = get_object_or_404(Stream, id=stream_id)
-    context = {
-        'stream': stream.id,
-        'year': stream
-    }
-    return render(request, 'streams/delete.html', context)
+class EditStream(generic.UpdateView):
+    model = Stream
+    fields = '__all__'
+    success_url = reverse_lazy('streams:streams')
+
+
+class DeleteStream(generic.DeleteView):
+    model = Stream
+    context_object_name = 'stream'
+    success_url = reverse_lazy('streams:streams')

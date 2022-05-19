@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'streams/styles/style.css' %}"> -->
+{% endblock %}
+
+{% block title %}
+  {% if stream %}
+    Поток {{ stream }}
+  {% else %}
+    Добавление потока
+  {% endif %}
+{% endblock %}
+
+{% block main %}
+  <main>
+    <a href="{% url 'streams:streams' %}">Назад</a>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Готово">
+    </form>
+  </main>
+{% endblock %}

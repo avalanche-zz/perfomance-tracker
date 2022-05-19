@@ -25,10 +25,10 @@ class Group(models.Model):
             return f'ЗКИ{str(self.stream)[-2:]}-{self.group}/{self.subgroup}'
         return f'КИ{str(self.stream)[-2:]}-{self.group}/{self.subgroup}'
 
-    EDUCATION_TYPE_CHOICES = (
+    EDUCATION_TYPE_CHOICES = [
         (0, 'Очное'),
         (1, 'Заочное')
-    )
+    ]
     stream = models.ForeignKey(
         'streams.Stream',
         on_delete=models.CASCADE,
