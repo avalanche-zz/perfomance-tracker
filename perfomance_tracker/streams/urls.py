@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import StreamsList, StreamDetail, AddStream, EditStream, DeleteStream, AddGroup
+from .views import StreamsList, StreamDetail, AddStream, EditStream, DeleteStream
 
 app_name = 'streams'
 urlpatterns = [

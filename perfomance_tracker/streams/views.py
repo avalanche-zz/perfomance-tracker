@@ -2,7 +2,6 @@ from django.db.models import Count
 from django.urls import reverse_lazy
 from django.views import generic
 
-from .forms import AddGroupForm
 from .models import Stream
 from groups.models import Group
 
