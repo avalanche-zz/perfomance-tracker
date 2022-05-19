@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'groups/styles/style.css' %}"> -->
+{% endblock %}
+
+{% block title %}
+  Поток {{ group }}
+{% endblock %}
+
+{% block main %}
+  <main>
+    <a href="{% url 'groups:groups' %}">Назад</a>
+    <form method="POST">
+      {% csrf_token %}
+      <span>
+        Вы действительно хотите удалить группу {{ group }}?
+      </span>
+      <input type="submit" value="Да">
+    </form>
+  </main>
+{% endblock %}

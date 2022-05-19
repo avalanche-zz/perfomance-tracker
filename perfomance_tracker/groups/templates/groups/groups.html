@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'groups/styles/style.css' %}"> -->
+{% endblock %}
+
+{% block title %}
+Группы
+{% endblock %}
+
+{% block main %}
+  <main>
+    <form method="GET">
+      <input type="text" name="search" placeholder="Поиск" value="{{ search }}">
+      <input type="submit" value="Найти">
+    </form>
+    <form method="GET">
+      <select id="filter-stream" name="stream">
+        <option value="">-</option>
+        {% for stream in streams %}
+          {% if stream_selected %}
+            <option value="{{ stream.pk }}" selected>{{ stream }}</option>
+          {% else %}
+            <option value="{{ stream.pk }}">{{ stream }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+      <select id="sort" name="sort">
+        {% if sort == 'group' %}
+          <option value="group" selected>Название</option>
+          <option value="students_number">Количество студентов</option>
+        {% elif sort == 'students_number' %}
+          <option value="group">Название</option>
+          <option value="students_number" selected>Количество студентов</option>
+        {% endif %}
+      </select>
+      <select id="order" name="order">
+        {% if sort == 'group' %}
+          {% if order == 'up' %}
+            <option value="up" selected>A-Z</option>
+            <option value="down">Z-A</option>
+          {% else %}
+            <option value="up">A-Z</option>
+            <option value="down" selected>Z-A</option>
+          {% endif %}
+        {% else %}
+          {% if order == 'up' %}
+            <option value="up" selected>0-9</option>
+            <option value="down">9-0</option>
+          {% else %}
+            <option value="up">0-9</option>
+            <option value="down" selected>9-0</option>
+          {% endif %}
+        {% endif %}
+        </select>
+      <input type="submit" value="Применить">
+    </form>
+    {% for group in groups %}
+      <div>
+        <a href="{% url 'groups:group' group.pk %}">{{ group }}</a>
+        {% if group.students_number %}
+        <span>Количество студентов: {{ group.students_number }}</span>
+        {% else %}
+        <span>Нет студентов</span>
+        {% endif %}
+        <a href="{% url 'groups:edit' group.pk %}">
+          Редактировать
+        </a>
+        <a href="{% url 'groups:delete' group.pk %}">
+          Удалить
+        </a>
+      </div>
+    {% empty %}
+      <span>Нет групп для показа.</span>
+    {% endfor %}
+    <a href="{% url 'groups:add' %}">Добавить группу</a>
+  </main>
+{% endblock %}

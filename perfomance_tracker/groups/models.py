@@ -10,7 +10,7 @@ class Group(models.Model):
             models.UniqueConstraint(
                 fields=[
                     'stream',
-                    'group',
+                    'group_number',
                     'subgroup',
                     'education_type'
                 ],
@@ -22,8 +22,8 @@ class Group(models.Model):
 
     def __str__(self):
         if self.education_type:
-            return f'ЗКИ{str(self.stream)[-2:]}-{self.group}/{self.subgroup}'
-        return f'КИ{str(self.stream)[-2:]}-{self.group}/{self.subgroup}'
+            return f'ЗКИ{str(self.stream)[-2:]}-{self.group_number}/{self.subgroup}'
+        return f'КИ{str(self.stream)[-2:]}-{self.group_number}/{self.subgroup}'
 
     EDUCATION_TYPE_CHOICES = [
         (0, 'Очное'),
@@ -34,7 +34,7 @@ class Group(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Поток'
     )
-    group = models.PositiveSmallIntegerField(
+    group_number = models.PositiveSmallIntegerField(
         verbose_name='Номер группы'
     )
     subgroup = models.CharField(

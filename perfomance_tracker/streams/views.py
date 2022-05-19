@@ -12,7 +12,7 @@ class StreamsList(generic.ListView):
     queryset = Stream.objects.annotate(groups_num=Count('group'))
     context_object_name = 'streams'
     ordering = [
-        '-stream'
+        'stream'
     ]
     template_name = 'streams/streams.html'
 

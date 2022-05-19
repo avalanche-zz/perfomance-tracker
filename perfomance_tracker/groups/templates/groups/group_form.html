@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'groups/styles/style.css' %}"> -->
+{% endblock %}
+
+{% block title %}
+  {% if group %}
+    Группа {{ group }}
+  {% else %}
+    Добавление группы
+  {% endif %}
+{% endblock %}
+
+{% block main %}
+  <main>
+    <a href="{% url 'groups:groups' %}">Назад</a>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Готово">
+    </form>
+  </main>
+{% endblock %}

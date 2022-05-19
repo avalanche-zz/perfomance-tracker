@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'groups/styles/style.css' %}"> -->
+{% endblock %}
+
+{% block title %}
+Группа {{ group }}
+{% endblock %}
+
+{% block main %}
+  <main>
+    <a href="{% url 'groups:groups' %}">Назад</a>
+    <h1>{{ group }}</h1>
+  </main>
+{% endblock %}
